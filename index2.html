@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XOE</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Press Start 2P", Arial, sans-serif;
+            color: #f00;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(90deg, #000000, #440000);
+            background-size: 200% 200%;
+            animation: gradientAnimation 8s linear infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .brand {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 0 10px #f00, 0 0 20px #f00;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border: 2px solid #f00;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            z-index: 1;
+            box-shadow: 0 0 20px #f00;
+        }
+
+        .data {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            border: 2px solid #f00;
+            border-radius: 5px;
+            background: #222;
+            color: #fff;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        .data:focus {
+            border-color: #880000;
+            outline: none;
+        }
+
+        .apps {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .app, .func {
+            background: #880000;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            text-shadow: 0 0 5px #f00, 0 0 10px #f00;
+        }
+
+        .app:hover, .func:hover {
+            background: #f00;
+            color: #000;
+            text-shadow: none;
+        }
+
+        .footer {
+            display: none; 
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="brand">XOE</div>
+  <main class="container">
+    <div id="countdown" class="data" style="font-size: 2rem;"></div>
+</main>
+<script>
+    function startCountdown() {
+        const countdownElement = document.getElementById('countdown');
+        const targetDate = new Date('2024-11-28T06:10:00-05:00'); // EST time
+
+        const interval = setInterval(() => {
+            const now = new Date();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                clearInterval(interval);
+                countdownElement.innerHTML = "Countdown Finished!";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }, 1000);
+    }
+
+    // Start the countdown when the page loads
+    window.onload = startCountdown;
+</script>
+
+
+    <script src="./uv/uv.bundle.js"></script>
+    <script src="./uv/uv.config.js"></script>
+    <script src="assets/js/go.js"></script>
+    <script src="assets/js/index.js"></script>
+
+</body>
+</html>

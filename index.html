@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Press Start 2P", Arial, sans-serif;
+            color: #f00;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(90deg, #000000, #440000);
+            background-size: 200% 200%;
+            animation: gradientAnimation 8s linear infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .brand {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 0 10px #f00, 0 0 20px #f00;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border: 2px solid #f00;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            z-index: 1;
+            box-shadow: 0 0 20px #f00;
+        }
+
+        .data {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            border: 2px solid #f00;
+            border-radius: 5px;
+            background: #222;
+            color: #fff;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        .data:focus {
+            border-color: #880000;
+            outline: none;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10;
+            backdrop-filter: blur(5px); /* Makes the blur overlay work properly */
+        }
+
+        .popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #111;
+            padding: 20px;
+            border: 2px solid #f00;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            color: #fff;
+            box-shadow: 0 0 20px #f00;
+            z-index: 11;
+        }
+
+        .popup .close-btn {
+            background: #f00;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .popup .close-btn:hover {
+            background: #880000;
+        }
+
+        .link-directory {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        .app {
+            display: block; /* Make links fully clickable */
+            background: #880000;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            text-shadow: 0 0 5px #f00, 0 0 10px #f00;
+            transition: background 0.3s;
+        }
+  .app2 {
+            display: block; /* Make links fully clickable */
+            background: #880000;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            text-shadow: 0 0 5px #f00, 0 0 10px #f00;
+            transition: background 0.3s;
+        }
+        .app:hover {
+            background: #f00;
+            color: #000;
+            text-shadow: none;
+        }
+
+       .motd {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #f5f5f5;
+        text-shadow: 0 0 5px #880000, 0 0 10px #880000;
+        animation: fadeIn 2s ease-in-out;
+        max-height: 100px; /* Adjust the height as needed */
+        overflow-y: auto; /* Enables vertical scrolling */
+        padding: 5px;
+        border: 1px solid #f00; /* Optional: Add a border for better visibility */
+        background: rgba(0, 0, 0, 0.5); /* Optional: Add a background for contrast */
+        border-radius: 5px; /* Optional: Rounded corners */
+    }
+
+    /* Optional: Style the scrollbar (for webkit browsers) */
+    .motd::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .motd::-webkit-scrollbar-thumb {
+        background: #f00;
+        border-radius: 4px;
+    }
+
+    .motd::-webkit-scrollbar-track {
+        background: #222;
+    }
+
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="brand"></div>
+   <main class="container">
+    <input type="text" class="data form-control" placeholder="Search or type a URL" spellcheck="false" autocomplete="off">
+   <center> <button id="open-popup-btn" class="app">Links</button></center> 
+    <div class="motd">
+        <small>Version: 1.00 [Beta]</small>
+    </div>
+</main>
+
+
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup">
+            <button class="close-btn" id="close-popup-btn">Close</button>
+            <div class="link-directory">
+                <a class="app" onclick="go('https://google.com')">Google</a>
+                <a class="app2" href="/you">YouTube</a>
+                <a class="app" onclick="go('https://discord.com')">Discord</a>
+                <a class="app" onclick="go('https://crazygames.com')">Crazygames</a>
+                <a class="app" onclick="go('https://gamaverse.com')">Gamaverse</a>
+                <a class="app2" href="/rob">Roblox</a>
+                <a class="app" onclick="go('https://soundcloud.com')">Soundcloud</a>
+            </div>
+        </div>
+    </div>
+   <script src="./uv/uv.bundle.js"></script>
+    <script src="./uv/uv.config.js"></script>
+    <script src="go.js"></script>
+    <script src="index.js"></script>
+    <script>
+        const openPopupBtn = document.getElementById("open-popup-btn");
+        const closePopupBtn = document.getElementById("close-popup-btn");
+        const popupOverlay = document.getElementById("popup-overlay");
+        const body = document.body;
+
+        openPopupBtn.addEventListener("click", () => {
+            popupOverlay.style.display = "block";
+            body.classList.add("blur-active");
+        });
+
+        closePopupBtn.addEventListener("click", () => {
+            popupOverlay.style.display = "none";
+            body.classList.remove("blur-active");
+        });
+
+       
+    </script>
+</body>
+</html>
+ <!--  -->                        

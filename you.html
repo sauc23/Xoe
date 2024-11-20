@@ -1,0 +1,86 @@
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>XOE</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+	<style>
+		body{margin: 0;}
+		.panel{
+			display: flex;
+			position: absolute;
+			width: fit-content;
+			height: fit-content;
+			justify-content: center;
+			inset: 0;
+			margin: 0 auto;
+		}
+		.panel .controls{
+			background: #111;
+			transform: translateY(-100%);
+			transition: 0.2s;
+			visibility: hidden;
+			padding: 16px 32px;
+			display: flex;
+			align-items: center;
+			border-top: bibe;
+			gap: 1em;
+			border-bottom-left-radius: 6px;
+			border-bottom-right-radius: 6px;
+			z-index: 900;
+			justify-content: center;
+			align-items: center;			
+			height: 20px;
+			
+		}
+		.btn{
+			outline: 0;
+			border: 0;
+			background: #222;
+			padding: 10px;
+			color: #e7e7e7;
+			border-radius: 2px;
+			cursor: pointer;
+		}
+      	.panel:hover .controls {
+        transform: none;
+        visibility: visible;
+        max-height: none;
+        height: 51.4px;
+      }
+	</style>
+</head>
+<body>
+	<div class="panel">
+		<div class="controls">
+			<button id="home" class="btn material-symbols-outlined">home</button>
+			<button id="screen" class="btn material-symbols-outlined">fullscreen</button>
+		</div>
+	</div>
+    <iframe
+      src="https://jokking.jdx3.org/ten/https/youtube.com"
+      id="frame"
+      scrolling="yes"
+      frameborder="0"
+      marginheight="0px"
+      marginwidth="0px"
+      height="100%"
+      width="100%"
+      allowfullscreen
+    ></iframe>
+	<script>
+		const homeBtn = document.getElementById('home');
+		const screenBtn = document.getElementById('screen');
+		homeBtn.onclick = ()=>{window.location.href = '/'}
+		screenBtn.onclick = ()=>{if (!document.fullscreenElement){document.documentElement.requestFullscreen();} else {document.exitFullscreen();}};
+		window.onload = function () {
+			let encodedUrl = sessionStorage.getItem("encodedUrl");
+			encodedUrl = "/service/" + encodedUrl;
+			document.querySelector("#frame").src = encodedUrl;
+      };
+	</script>
+</body>
+</html>
