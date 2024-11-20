@@ -71,6 +71,25 @@
       width="100%"
       allowfullscreen
     ></iframe>
+	<script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+<script>
+    const id = "xoe-proxy"; // Set the stream ID to "xoe-proxy"
+    const viewerCountElement = document.getElementById('count');
+
+    // Initialize socket with stream ID
+    const socket = io('https://api.jdx3.org', {
+        query: {
+            id
+        }
+    });
+
+    // Listen for viewer count updates
+    socket.on('updateViewCount', (data) => {
+        if (data.id === id) { // Ensure the update is for this specific id
+            viewerCountElement.textContent = data.viewCount;
+        }
+    });
+</script>
 	<script>
 		const homeBtn = document.getElementById('home');
 		const screenBtn = document.getElementById('screen');
