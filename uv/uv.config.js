@@ -1,6 +1,7 @@
 /*global Ultraviolet*/
 self.__uv$config = {
 	prefix: "/service/",
+	bare: "https://barre.jdx3.org/",
 	encodeUrl: Ultraviolet.codec.xor.encode,
 	decodeUrl: Ultraviolet.codec.xor.decode,
 	handler: "/uv.handler.js",
